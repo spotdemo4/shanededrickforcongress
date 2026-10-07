@@ -1,5 +1,5 @@
 {
-  description = "congress website for shane xD";
+  description = "parody campaign website for shane xD";
 
   nixConfig = {
     extra-substituters = [
@@ -50,19 +50,6 @@
 
               # util
               treefmt
-              bumper
-            ];
-          };
-
-          bump = pkgs.mkShell {
-            packages = with pkgs; [
-              bumper
-            ];
-          };
-
-          release = pkgs.mkShell {
-            packages = with pkgs; [
-              flake-release
             ];
           };
 
@@ -94,12 +81,13 @@
                 fileset = fileset.unions [
                   ./.oxfmtrc.json
                   ./.oxlintrc.json
+                  ./index.html
                   ./LICENSE
                   ./package-lock.json
                   ./package.json
+                  ./public
                   ./README.md
                   ./src
-                  ./tests
                   ./tsconfig.json
                   ./vite.config.ts
                 ];
@@ -111,48 +99,30 @@
                 npmRoot = final.src;
               };
 
+              doCheck = true;
               nativeCheckInputs = with pkgs; [
                 oxlint
               ];
               checkPhase = ''
                 runHook preCheck
                 oxlint --deny-warnings
-                npm test
                 runHook postCheck
               '';
 
-              installCheckPhase = ''
-                runHook preInstallCheck
-                test "$("$out/bin/shanededrickforcongress")" = "Hello, world!"
-                runHook postInstallCheck
+              installPhase = ''
+                runHook preInstall
+                cp -r dist $out
+                runHook postInstall
               '';
 
               meta = {
-                mainProgram = "shanededrickforcongress";
-                description = "congress website for shane xD";
+                description = "parody campaign website for shane xD";
                 license = licenses.mit;
                 platforms = platforms.all;
-                badPlatforms = [ systems.inspect.platformPatterns.isStatic ];
                 homepage = "https://trev.zip/llc/shanededrickforcongress";
-                changelog = "https://trev.zip/llc/shanededrickforcongress/releases";
-                downloadPage = "https://trev.zip/llc/shanededrickforcongress/releases/tag/v${final.version}";
               };
             }
           );
-        };
-
-        # nix build #images.[...]
-        images = {
-          default = pkgs.mkImage {
-            src = self.packages.${system}.default;
-          };
-        };
-
-        # nix build #appimages.[...]
-        appimages = {
-          default = pkgs.mkAppImage {
-            src = self.packages.${system}.default;
-          };
         };
 
         # nix fmt
@@ -197,19 +167,6 @@
             ];
             script = ''
               nixfmt --check "$file"
-            '';
-          };
-
-          action = {
-            root = ./.;
-            files = ./action.yaml;
-            packages = with pkgs; [
-              action-validator
-              zizmor
-            ];
-            script = ''
-              action-validator "$file"
-              zizmor --offline "$file"
             '';
           };
 

@@ -25,10 +25,6 @@ npm install
 
 ### run
 
-```sh
-nix run
-```
-
 with [npm](https://docs.npmjs.com/):
 
 ```sh
@@ -53,10 +49,9 @@ oxfmt --write .
 nix flake check
 ```
 
-with [npm](https://docs.npmjs.com/) and [oxlint](https://oxc.rs/):
+with [oxlint](https://oxc.rs/):
 
 ```sh
-npm test
 oxlint --deny-warnings
 ```
 
@@ -66,18 +61,8 @@ oxlint --deny-warnings
 nix build
 ```
 
-with [npm](https://docs.npmjs.com/):
+with [npm](https://docs.npmjs.com/) (outputs to `dist/`):
 
 ```sh
 npm run build
 ```
-
-### release
-
-with [bumper](https://trev.zip/llc/bumper):
-
-```sh
-bumper
-```
-
-releases are automatically created for [significant](https://www.conventionalcommits.org/en/v1.0.0/#summary) changes

@@ -1,21 +1,10 @@
-import { defineConfig } from "vitest/config";
+import solid from "@solidjs/vite-plugin";
+import { defineConfig } from "vite";
 
 export default defineConfig({
+  plugins: [solid()],
   build: {
-    ssr: "src/index.ts",
-    outDir: "build",
+    outDir: "dist",
     emptyOutDir: true,
-    minify: true,
-    rolldownOptions: {
-      output: {
-        banner: "#!/usr/bin/env node",
-      },
-    },
-  },
-  ssr: {
-    noExternal: true,
-  },
-  test: {
-    include: ["tests/**/*.test.ts"],
   },
 });

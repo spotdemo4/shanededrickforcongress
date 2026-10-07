@@ -1,28 +1,28 @@
 {
   "name": "shanededrickforcongress",
   "version": "0.0.1",
-  "description": "congress website for shane xD",
+  "private": true,
+  "description": "parody campaign website for shane xD",
   "license": "MIT",
   "repository": {
     "url": "https://trev.zip/llc/shanededrickforcongress"
   },
-  "bin": {
-    "shanededrickforcongress": "build/index.js"
-  },
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "build": "vite build",
-    "dev": "vite build && node build/index.js",
-    "prepare": "vite build && chmod +x build/index.js",
-    "test": "vitest run"
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/oswald": "^5.3.0",
+    "@fontsource/libre-baskerville": "^5.3.0",
+    "@solidjs/web": "^2.0.0-rc.13",
+    "solid-js": "^2.0.0-rc.13"
   },
   "devDependencies": {
-    "@tsconfig/node-ts": "^23.6.4",
-    "@tsconfig/node24": "^24.0.5",
-    "@types/node": "^24.19.1",
+    "@solidjs/vite-plugin": "^3.0.0-next.47",
     "typescript": "^7.0.2",
-    "vite": "^8.3.3",
-    "vitest": "^5.0.3"
+    "vite": "^8.3.3"
   },
   "engines": {
     "node": ">=24.0.0"

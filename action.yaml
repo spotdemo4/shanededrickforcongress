@@ -1,7 +1,0 @@
-name: "shanededrickforcongress"
-description: "congress website for shane xD"
-author: "trev"
-
-runs:
-  using: node24
-  main: src/index.ts
