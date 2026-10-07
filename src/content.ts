@@ -1,7 +1,7 @@
 // Every factual claim on the site is sourced from the WLNS article below.
 // The jokes are ours; the quotes are theirs.
 
-export const PAID_FOR_BY = "trev (trev.zip)";
+export const PAID_FOR_BY = "trev";
 
 export const ARTICLE = {
   url: "https://www.wlns.com/your-local-election-hq/dedrick-michigan-congressional-race-controversy/",
