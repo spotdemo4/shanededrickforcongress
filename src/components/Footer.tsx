@@ -18,7 +18,7 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h2 class="footer-heading">Sources (the “fake news”)</h2>
+          <h2 class="footer-heading">Sources</h2>
           <ul class="sources">
             <For each={SOURCES}>
               {(source) => (

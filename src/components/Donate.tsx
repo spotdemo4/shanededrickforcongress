@@ -1,10 +1,6 @@
 import { For, Show, createSignal } from "solid-js";
 
-const AMOUNTS = [
-  { amount: 1, note: "" },
-  { amount: 5, note: "" },
-  { amount: 6, note: "The Perry Johnson Special" },
-];
+const AMOUNTS = [1, 5, 6];
 
 export default function Donate() {
   const [picked, setPicked] = createSignal<number>();
@@ -12,33 +8,27 @@ export default function Donate() {
   return (
     <section class="section donate" id="donate">
       <div class="section-inner donate-inner">
-        <p class="eyebrow">★ Join the Movement ★</p>
-        <h2>Chip In to Keep Shane on the Ballot</h2>
-        <p class="lede">(He can’t get off the ballot anyway. Michigan law says so. But still.)</p>
+        <p class="eyebrow eyebrow-yellow">Contribute</p>
+        <h2 class="section-title loud">Chip In Today!</h2>
+        <p class="lede">Every dollar counts. Six of them, in particular.</p>
         <div class="donate-amounts">
           <For each={AMOUNTS}>
-            {(option) => (
+            {(amount) => (
               <button
-                class={["donate-amount", { active: picked() === option.amount }]}
+                class={["donate-amount", { active: picked() === amount }]}
                 type="button"
-                onClick={() => setPicked(option.amount)}
+                onClick={() => setPicked(amount)}
               >
-                <span class="donate-dollars">${option.amount}</span>
-                <Show when={option.note}>
-                  <span class="donate-note">{option.note}</span>
-                </Show>
+                ${amount}
               </button>
             )}
           </For>
         </div>
         <Show when={picked()}>
-          {(amount) => (
-            <p class="donate-result" aria-live="polite">
-              Thank you, patriot! Your ${amount()} has been routed to… nowhere. This is a parody
-              site, and it doesn’t collect money. As of WLNS’s August reporting, there wasn’t even
-              an FEC-registered campaign committee to give it to.
-            </p>
-          )}
+          <p class="donate-result" aria-live="polite">
+            Thank you. This is a parody website and does not accept contributions. As of WLNS’s
+            August reporting, Shane Dedrick had no FEC-registered campaign committee.
+          </p>
         </Show>
       </div>
     </section>

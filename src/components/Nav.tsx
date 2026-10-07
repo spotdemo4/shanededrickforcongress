@@ -1,10 +1,11 @@
 import { For } from "solid-js";
 
 const LINKS = [
-  { href: "#meet", label: "Meet Shane" },
-  { href: "#issues", label: "Issues" },
-  { href: "#fake-news", label: "Fake News" },
-  { href: "#endorsements", label: "Endorsements" },
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#platform", label: "Platform" },
+  { href: "#news", label: "News" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -29,8 +30,8 @@ export default function Nav() {
             </For>
           </ul>
         </nav>
-        <a class="btn btn-red" href="#donate">
-          Donate
+        <a class="btn btn-yellow" href="#donate">
+          Contribute
         </a>
       </div>
     </header>
